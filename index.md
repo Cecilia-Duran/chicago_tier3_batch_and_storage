@@ -7,8 +7,6 @@ The UChicago Analysis Facility uses HTCondor for batch workloads. You will need 
 HTCondor is a job scheduler
 This lesson describes how to manage jobs
 
-
-<<<<<<< HEAD
 > ## Prerequisites
 >
 >
