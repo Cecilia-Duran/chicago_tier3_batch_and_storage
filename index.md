@@ -8,7 +8,7 @@ HTCondor is a job scheduler
 This lesson describes how to manage jobs
 
 
-> ## Prerequisites
+> ## Prerequisites.
 >
 > This assumes you already signed up on the [UChicago Analysis Facility website](https://af.uchicago.edu/)
 >
