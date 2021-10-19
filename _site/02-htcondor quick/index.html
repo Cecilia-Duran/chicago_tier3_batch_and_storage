@@ -1,0 +1,567 @@
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2021-10-18 23:26:16 -0500">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/syntax.css" />
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://localhost:4000/assets/favicons/swc/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/assets/favicons/swc/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/assets/favicons/swc/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/assets/favicons/swc/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://localhost:4000/assets/favicons/swc/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://localhost:4000/assets/favicons/swc/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://localhost:4000/assets/favicons/swc/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://localhost:4000/assets/favicons/swc/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="http://localhost:4000/assets/favicons/swc/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="http://localhost:4000/assets/favicons/swc/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="http://localhost:4000/assets/favicons/swc/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="http://localhost:4000/assets/favicons/swc/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="http://localhost:4000/assets/favicons/swc/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Software Carpentry - UChicago Tier 3 Batch & Storage"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="http://localhost:4000/assets/favicons/swc/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="http://localhost:4000/assets/favicons/swc/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="http://localhost:4000/assets/favicons/swc/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="http://localhost:4000/assets/favicons/swc/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="http://localhost:4000/assets/favicons/swc/mstile-310x310.png" />
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>UChicago Tier 3 Batch & Storage: HTCondor Quick Start</title>
+  </head>
+  <body>
+
+    
+
+
+<div class="panel panel-default life-cycle">
+  <div id="life-cycle" class="panel-body pre-alpha">
+    This lesson is still being designed and assembled (Pre-Alpha version)
+  </div>
+</div>
+
+
+
+
+
+    <div class="container">
+      
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../index.html">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+
+        
+	
+        <li><a href="../setup.html">Setup</a></li>
+
+        
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-introduction/index.html">Introduction</a></li>
+            
+            <li><a href="../02-htcondor%20quick/index.html">HTCondor Quick Start</a></li>
+            
+            <li><a href="../03-running_ajob/index.html">Running a Job</a></li>
+            
+            <li><a href="../04-submitting_ajob/index.html">Submitting a Job</a></li>
+            
+            <li><a href="../05-coffee/index.html">Coffee break!</a></li>
+            
+            <li><a href="../06-managing_ajob/index.html">Managing a job</a></li>
+            
+            <li><a href="../07-services_goodpractices/index.html">Services for Running Jobs</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio/index.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference.html">Reference</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../LICENSE.html">License</a></li>
+	
+	<li><a href="/edit/gh-pages/_episodes/02-htcondor quick.md">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-introduction/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">UChicago Tier 3 Batch & Storage</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../03-running_ajob/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">HTCondor Quick Start</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 5 min
+      <br/>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>Brief Description</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Review concepts</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>HTCondor is a job scheduler, you five thc a file containgin commands that tell it how to run jobs. htc locates a machine that can run each job withn the pool of machines, packages up the job and ships it off to this execute machine, the jobs run and output is returned to the machine that submitted the jobs</p>
+
+<p>This guides provides enough guidance to submit and observer the successful completion of a first job, it then suggests extensions that you can apply to your particular jobs</p>
+
+<blockquote class="callout">
+  <h2 id="this-guide-presumes-that">This guide presumes that</h2>
+
+  <ul>
+    <li>
+      <p>HTcondor is running.</p>
+    </li>
+    <li>
+      <p>You have access to a machine withn the pool that may submit jobs.</p>
+    </li>
+    <li>
+      <p>You are logged into a working on the submit machine.</p>
+    </li>
+    <li>
+      <p>Your program executable, your submit description file and any needed input files are all on the file system of the submit machine.</p>
+    </li>
+    <li>
+      <p>Your job (the program executable) is able to run without any interactive input.</p>
+    </li>
+  </ul>
+
+</blockquote>
+
+<h2 id="a-first-htcondor-job">A first HTCondor job</h2>
+
+<p>For HTCondor to run a job it must be given details such as the names and location of the exe and all needed input files in a submit description file.</p>
+
+<p>This first executable program is a shell script. Try this example, log in to the submit machine, and use an editor to type in or copy and paste the file contents. Name the resulting file sleep.sh</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c"># file name: sleep.sh</span>
+
+<span class="nv">TIMETOWAIT</span><span class="o">=</span><span class="s2">"6"</span>
+<span class="nb">echo</span> <span class="s2">"sleeping for </span><span class="nv">$TIMETOWAIT</span><span class="s2"> seconds"</span>
+/bin/sleep <span class="nv">$TIMETOWAIT</span>
+
+</code></pre></div></div>
+<p>Change the sleep.sh file to be executable by running the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>u+x sleep.sh
+</code></pre></div></div>
+
+<p>The submit description file describes the job. To submit this sample job, again use an editor to create the file sleep.sub.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># sleep.sub -- simple sleep job</span>
+
+executable              <span class="o">=</span> sleep.sh
+log                     <span class="o">=</span> sleep.log
+output                  <span class="o">=</span> outfile.txt
+error                   <span class="o">=</span> errors.txt
+should_transfer_files   <span class="o">=</span> Yes
+when_to_transfer_output <span class="o">=</span> ON_EXIT
+queue
+</code></pre></div></div>
+
+<p>The first line of this submit description file is a comment. Comments begin with the # character. Comments do not span lines.</p>
+
+<p>Each line of the submit description file has the form</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>command_name <span class="o">=</span> value
+</code></pre></div></div>
+
+<p>The command name is case insensitive and precedes an equals sign. Values to right of the equals sign are likely to be case sensitive, especially in the case that they specify paths and file names.</p>
+
+<p>Next in this file is a specification of the executable to run. It specifies the program that becomes the HTCondor job. For this example, it is the file name of the script. A full path and executable name, or a path and executable relative to the current working directory may be specified.</p>
+
+<p>The log command causes a job event log file named sleep.log to be created on the submit machine once the job is submitted. A log is not necessary, but it can be incredibly useful in figuring out what happened or is happening with a job.</p>
+
+<p>If this script/batch file were to be invoked from the command line, and outside of HTCondor, its single line of output</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sleeping for 6 seconds
+</code></pre></div></div>
+<p>would be sent to standard output (the display). When submitted as an HTCondor job, standard output of the execute machine is on that execute machine, and thus unavailable. HTCondor captures standard output in a file due to the output command in the submit description file. This example names the redirected standard output file outfile.txt, and this file is returned to the submit machine when the job completes. The same structure is specified for standard error, as specified with the error command.</p>
+
+<p>The commands</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>should_transfer_files   <span class="o">=</span> Yes
+when_to_transfer_output <span class="o">=</span> ON_EXIT
+</code></pre></div></div>
+<p>direct HTCondor to explicitly send the needed files, including the executable, to the machine where the job executes. These commands will likely not be necessary for jobs in which the submit machine and the execute machine access a shared file system. However, including these commands will allow this first sample job to work under a large variety of pool configurations.</p>
+
+<p>The queue command tells HTCondor to run one instance of this job.</p>
+
+<h3 id="submitting-the-job">Submitting the job</h3>
+
+<p>With this submit description file, all that remains is to hand off the job to HTCondor. With the current working directory being the one that contains the sleep.sub submit description file and the executable (sleep.sh or sleep.bat), this job submission is accomplished with the command line</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>condor_submit sleep.sub
+</code></pre></div></div>
+
+<p>If the submission is successful, the terminal will display a response that identifies the job, of the form</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Submitting job(s).
+1 job(s) submitted to cluster 6.
+</code></pre></div></div>
+
+<h3 id="monitoring-the-job">Monitoring the job</h3>
+
+<p>Once the job has been submitted, command line tools may help you follow along with the progress of the job. The condor_q command prints a listing of all the jobs currently in the queue. For example, a short time after the user Kris submits the sleep job the submit machine on a pool that has no other queued jobs, the output may appear as</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>condor_q
+-- Submitter: example.wisc.edu : &lt;128.105.14.44:56550&gt; : example.wisc.edu
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD
+    6.0   kris            2/13 10:49   0+00:00:03 R  0   97.7 sleep.sh
+
+1 jobs; 0 completed, 0 removed, 0 idle, 1 running, 0 held, 0 suspended
+</code></pre></div></div>
+
+<p>The queue might contain many jobs. To see only Kris’ jobs, add an option to the condor_q command that specifies to only print Kris’ jobs:</p>
+
+<div class="language-bash output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>condor_q <span class="nt">-submitter</span> kris
+</code></pre></div></div>
+
+<p>The first column of output from condor_q identifies the job; the identifier is composed of two integers separated by a period. The first integer is known as a cluster number, and it will be the same for each of the potentially many jobs submitted by a single invocation of condor_submit. The second integer in the identifier is known as a process ID, and it distinguishes between distinct job instances that have the same cluster number. These values start at 0.</p>
+
+<p>Of interest in this output, the job is running, and it has used 3 seconds of time so far.</p>
+
+<p>At job completion, the log file contains</p>
+
+<pre class="output"><code class="language-Output">000 (006.000.000) 02/13 10:49:04 Job submitted from host: &lt;128.105.14.44:46062&gt;
+...
+001 (006.000.000) 02/13 10:49:24 Job executing on host: &lt;128.105.15.5:43051?PrivNet=cs.wisc.edu&gt;
+...
+006 (006.000.000) 02/13 10:49:30 Image size of job updated: 100000
+        0  -  MemoryUsage of job (MB)
+        0  -  ResidentSetSize of job (KB)
+...
+005 (006.000.000) 02/13 10:49:31 Job terminated.
+        (1) Normal termination (return value 0)
+                Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+                Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+                Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+                Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+        23  -  Run Bytes Sent By Job
+        113  -  Run Bytes Received By Job
+        23  -  Total Bytes Sent By Job
+        113  -  Total Bytes Received By Job
+        Partitionable Resources :    Usage  Request Allocated
+           Cpus                 :                 1         1
+           Disk (KB)            :   100000   100000   2033496
+           Memory (MB)          :        0       98      2001
+...
+</code></pre>
+
+<p>Each event in the job event log file is separated by a line containing three periods. For each event, the first 3-digit value is an event number.</p>
+
+<h3 id="removing-a-job">Removing a job</h3>
+
+<p>Successfully submitted jobs will occasionally need to be removed from the queue. Invoke the condor_rm command specifying the job identifier as a command line argument. Kris’ job may be removed from the queue with</p>
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>condor_rm 6.0
+</code></pre></div></div>
+
+<p>Specification of the cluster number only as with the command</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>condor_rm 6
+</code></pre></div></div>
+
+<p>will cause all jobs within that cluster to be removed.</p>
+
+<h2 id="the-science-job-example">The science Job Example</h2>
+
+<p>A second example job illustrates aspects of file specification for the job. Assume that the program executable is called science.exe. This program does not use standard input or output; instead, the command line to invoke this program specifies two input files and one output file. For this example, the command line to invoke science.exe (not as an HTCondor job) will be</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>science.exe infile-A.txt infile-B.txt outfile.txt
+</code></pre></div></div>
+
+<p>While the name of the executable is specified in the submit description file with the executable command, the remainder of the command line will be specified with the arguments command.</p>
+
+<p>Here is the submit description file for this job:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># science1.sub -- run one instance of science.exe</span>
+executable              <span class="o">=</span> science.exe
+arguments               <span class="o">=</span> <span class="s2">"infile-A.txt infile-B.txt outfile.txt"</span>
+transfer_input_files    <span class="o">=</span> infile-A.txt,infile-B.txt
+should_transfer_files   <span class="o">=</span> IF_NEEDED
+when_to_transfer_output <span class="o">=</span> ON_EXIT
+log                     <span class="o">=</span> science1.log
+queue
+</code></pre></div></div>
+<p>The input files infile-A.txt and infile-B.txt will need to be available on the execute machine within the pool where the job runs. HTCondor cannot interpret command line arguments, so it cannot know that these command line arguments for this job specify input and output files. The submit command transfer_input_files instructs HTCondor to transfer these input files from the machine where the job is submitted to the machine chosen to execute the job. The default operation of HTCondor is to transfer all files created by the job on the execute machine back to the submit machine. Therefore, there is no specification of the outfile.txt output file.</p>
+
+<p>This example submit description file modifies the commands that direct the transfer of files from submit machine to execute machine and back again.</p>
+
+<div class="language-bash output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>should_transfer_files   <span class="o">=</span> IF_NEEDED
+when_to_transfer_output <span class="o">=</span> ON_EXIT
+</code></pre></div></div>
+
+<p>These values are the HTCondor defaults, so are not needed in this example. They are included to direct attention to the capabilities of HTCondor. The should_transfer_files command specifies whether HTCondor should assume the existence of a file system shared by the submit machine and the execute machine. Where there is a shared file system, a correctly configured pool of machines will not need to transfer the files from one machine to the other, as both can access the shared file system. Where there is not a shared file system, HTCondor must transfer the files from one machine to the other. The specification IF_NEEDED asks HTCondor to use a shared file system when one is detected, but to transfer the files when no shared file system is detected. When files are to be transferred, HTCondor automatically sends the executable as well as a file representing standard input; this file would be specified by the input submit command, and it is not relevant to this example. Other files are specified in a comma separated list with transfer_input_files, as they are in this example.</p>
+
+<p>When the job completes, all files created by the executable as it ran are transferred back to the submit machine.</p>
+
+<h2 id="expanding-the-science-job-and-the-organization-of-files">Expanding the science Job and the Organization of Files</h2>
+
+<p>A further example promotes understanding of how HTCondor makes the submission of lots of jobs easy. Assume that the science.exe job is to be run 40 times. If the input and output files were exactly the same for each run, then only the last line of the given submit description file changes: from</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>queue
+</code></pre></div></div>
+<p>to</p>
+
+<div class="language-bash output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>queue 40
+</code></pre></div></div>
+
+<p>It is likely that this does not produce the desired outcome, as the output file created, outfile.txt, has the same name for each queued instance of the job, and thus this file of results for each run conflicts. Chances are that the input files also must be distinct for each of the 40 separate instances of the job. HTCondor offers the use of a macro that can uniquely name each run’s input and output file names. The $(Process) macro causes substitution by the process ID from the job identifier. The submit description file for this proposed solution uniquely names the files:</p>
+
+<div class="language-bash output highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># science2.sub -- run 40 instances of science.exe</span>
+executable              <span class="o">=</span> science.exe
+arguments               <span class="o">=</span> <span class="s2">"infile-</span><span class="si">$(</span>Process<span class="si">)</span><span class="s2">A.txt infile-</span><span class="si">$(</span>Process<span class="si">)</span><span class="s2">B.txt outfile</span><span class="si">$(</span>Process<span class="si">)</span><span class="s2">.txt"</span>
+transfer_input_files    <span class="o">=</span> infile-<span class="si">$(</span>Process<span class="si">)</span>A.txt,infile-<span class="si">$(</span>Process<span class="si">)</span>B.txt
+should_transfer_files   <span class="o">=</span> IF_NEEDED
+when_to_transfer_output <span class="o">=</span> ON_EXIT
+log                     <span class="o">=</span> science2.log
+queue 40
+</code></pre></div></div>
+
+<p>The 40 instances of this job will have process ID values that run from 0 to 39. The two input files for process ID 0 are infile-0A.txt and infile-0B.txt, the ones for process ID 1 will be infile-1A.txt and infile-1B.txt, and so on, all the way to process ID 39, which will be files infile-39A.txt and infile-39B.txt. Using this macro for the output file naming of each of the 40 jobs creates outfile0.txt for process ID 0; outfile1.txt for process ID 1; and so on, to outfile39.txt for process ID 39.</p>
+
+<p>This example does not scale well as the number of jobs increases, because the number of files in the same directory becomes unwieldy. Assume now that there will be 100 instances of the science.exe job, and each instance has distinct input files, and produces a distinct output file. A recommended organization introduces a unique directory for each job instance. The following submit description file facilitates this organization by specifying the directory with the initialdir command. The directories for this example are named run0, run1, etc. all the way to run99 for the 100 instances of the following example submit file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># science3.sub -- run 100 instances of science.exe, with</span>
+<span class="c">#  unique directories named by the $(Process) macro</span>
+executable              <span class="o">=</span> science.exe
+arguments               <span class="o">=</span> <span class="s2">"infile-A.txt infile-B.txt outfile.txt"</span>
+should_transfer_files   <span class="o">=</span> IF_NEEDED
+when_to_transfer_output <span class="o">=</span> ON_EXIT
+initialdir              <span class="o">=</span> run<span class="si">$(</span>Process<span class="si">)</span>
+transfer_input_files    <span class="o">=</span> infile-A.txt,infile-B.txt
+log                     <span class="o">=</span> science3.log
+queue 100
+</code></pre></div></div>
+
+<p>The input and output files for each job instance can again be the initial simple names that do not incorporate the $(Process) macro. These files are distinct for each run due to their placement within a uniquely named directory. This organization also works well for executables that do not facilitate command line naming of input or output files.</p>
+
+<p>Here is a listing of the files and directories on the submit machine within this suggested directory structure. The files created due to submitting and running the jobs are shown preceded by an asterisk (*). Only a subset of the 100 directories are shown. Directories are identified using the Linux (and Mac) convention of appending the directory name with a slash character (/).</p>
+
+<pre class="output"><code class="language-output">science.exe
+science3.sub
+run0/
+    infile-A.txt
+    infile-B.txt
+    * outfile.txt
+    * science3.log
+run1/
+    infile-A.txt
+    infile-B.txt
+    * outfile.txt
+    * science3.log
+run2/
+    infile-A.txt
+    infile-B.txt
+    * outfile.txt
+    * science3.log
+</code></pre>
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>what did we learn</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-introduction/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../03-running_ajob/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      
+<footer>
+  <div class="row">
+    <div class="col-md-6 copyright" align="left">
+	
+	Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2021
+	by <a href="https://carpentries.org/">The Carpentries</a>
+        <br>
+        Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2016–2018
+	by <a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	<a href="/edit/gh-pages/_episodes/02-htcondor quick.md">Edit on GitHub</a>
+	
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CITATION">Cite</a>
+	/
+	<a href="mailto:duranmcecilia@gmail.com">Contact</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" align="center">
+      Using <a href="https://github.com/carpentries/styles/">The Carpentries style</a>
+      version <a href="https://github.com/carpentries/styles/releases/tag/v9.5.3">9.5.3</a>.
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
