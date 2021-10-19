@@ -5,11 +5,10 @@ exercises: 0
 questions:
 - "Key question (FIXME)"
 objectives:
-- "First learning objective. (FIXME)"
+- "First objective. (FIXME)"
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "First key point. (FIXME)"
 ---
 FIXME
 
 {% include links.md %}
-

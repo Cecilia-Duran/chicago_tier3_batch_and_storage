@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import unittest
 
 import lesson_check
@@ -10,8 +12,10 @@ class TestFileList(unittest.TestCase):
 
     def test_file_list_has_expected_entries(self):
         # For first pass, simply assume that all required files are present
+        all_filenames = [filename.replace('%', '')
+                         for filename in lesson_check.REQUIRED_FILES]
 
-        lesson_check.check_fileset('', self.reporter, lesson_check.REQUIRED_FILES)
+        lesson_check.check_fileset('', self.reporter, all_filenames)
         self.assertEqual(len(self.reporter.messages), 0)
 
 

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 '''Check that a workshop's index.html metadata is valid.  See the
 docstrings on the checking functions for a summary of the checks.
 '''
@@ -16,6 +18,7 @@ EVENTBRITE_PATTERN = r'\d{9,10}'
 URL_PATTERN = r'https?://.+'
 
 # Defaults.
+CARPENTRIES = ("dc", "swc")
 DEFAULT_CONTACT_EMAIL = 'admin@software-carpentry.org'
 
 USAGE = 'Usage: "workshop_check.py path/to/root/directory"'
@@ -87,6 +90,13 @@ def check_layout(layout):
 
 
 @look_for_fixme
+def check_carpentry(layout):
+    '''"carpentry" in YAML header must be "dc" or "swc".'''
+
+    return layout in CARPENTRIES
+
+
+@look_for_fixme
 def check_country(country):
     '''"country" must be a lowercase ISO-3166 two-letter code.'''
 
@@ -107,7 +117,7 @@ def check_humandate(date):
     and 4-digit year.  Examples include 'Feb 18-20, 2025' and 'Feb 18
     and 20, 2025'.  It may be in languages other than English, but the
     month name should be kept short to aid formatting of the main
-    Carpentries web site.
+    Software Carpentry web site.
     """
 
     if ',' not in date:
@@ -155,29 +165,20 @@ def check_date(this_date):
 
 
 @look_for_fixme
-def check_latitude(latitude):
+def check_latitude_longitude(latlng):
     """
-    'latitude' must be a valid latitude represented as a
-    floating-point number separated by a comma.
-    """
-
-    try:
-        lat = float(latitude)
-        return (-90.0 <= lat <= 90.0)
-    except ValueError:
-        return False
-
-def check_longitude(longitude):
-    """
-    'longitude' must be a valid latitude represented as a
-    floating-point number separated by a comma.
+    'latlng' must be a valid latitude and longitude represented as two
+    floating-point numbers separated by a comma.
     """
 
     try:
-        lat = float(longitude)
-        return (-180.0 <= lat <= 180)
+        lat, lng = latlng.split(',')
+        lat = float(lat)
+        lng = float(lng)
+        return (-90.0 <= lat <= 90.0) and (-180.0 <= lng <= 180.0)
     except ValueError:
         return False
+
 
 def check_instructors(instructors):
     """
@@ -254,6 +255,9 @@ def check_pass(value):
 HANDLERS = {
     'layout':     (True, check_layout, 'layout isn\'t "workshop"'),
 
+    'carpentry':  (True, check_carpentry, 'carpentry isn\'t in ' +
+                   ', '.join(CARPENTRIES)),
+
     'country':    (True, check_country,
                    'country invalid: must use lowercase two-letter ISO code ' +
                    'from ' + ', '.join(ISO_COUNTRY)),
@@ -267,9 +271,7 @@ HANDLERS = {
                    '"Jan" and four-letter years like "2025"'),
 
     'humantime':  (True, check_humantime,
-                   'humantime is misformatted. Acceptable formats are '
-                   '"9:00 am - 5:00 pm", "09:00am - 05:00pm", "09:00-17:00" '
-                   '(spaces are ignored).'),
+                   'humantime doesn\'t include numbers'),
 
     'startdate':  (True, check_date,
                    'startdate invalid. Must be of format year-month-day, ' +
@@ -279,13 +281,9 @@ HANDLERS = {
                    'enddate invalid. Must be of format year-month-day, i.e.,' +
                    ' 2014-01-31'),
 
-    'latitude':    (True, check_latitude,
-                   'latitude invalid. Check that it is a floating point, ' +
-                   'between -90 and 90'),
-
-    'longitude':    (True, check_longitude,
-                   'longitude invalid. Check that it is a floating point, ' +
-                   'between -180 and 180'),
+    'latlng':     (True, check_latitude_longitude,
+                   'latlng invalid. Check that it is two floating point ' +
+                   'numbers, separated by a comma'),
 
     'instructor': (True, check_instructors,
                    'instructor list isn\'t a valid list of format ' +
@@ -392,7 +390,7 @@ def check_config(reporter, filename):
                    kind)
 
     carpentry = config.get('carpentry', None)
-    reporter.check(carpentry in ('swc', 'dc', 'lc', 'cp'),
+    reporter.check(carpentry in ('swc', 'dc'),
                    filename,
                    'Missing or unknown carpentry: {0}',
                    carpentry)
@@ -406,13 +404,13 @@ def main():
         sys.exit(1)
 
     root_dir = sys.argv[1]
-    index_file = os.path.join(root_dir, 'index.md')
+    index_file = os.path.join(root_dir, 'index.html')
     config_file = os.path.join(root_dir, '_config.yml')
 
     reporter = Reporter()
     check_config(reporter, config_file)
     check_unwanted_files(root_dir, reporter)
-    with open(index_file, encoding='utf-8') as reader:
+    with open(index_file) as reader:
         data = reader.read()
         check_file(reporter, index_file, data)
     reporter.report()
