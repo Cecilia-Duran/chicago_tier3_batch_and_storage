@@ -8,8 +8,7 @@ questions:
 objectives:
 - "Understand the jobs"
 keypoints:
-- "What are are the 5 steps to submit a job??"
-- ""
+- "What are are the 5 steps to run a job??  -=≡Σ((( つ•̀ω•́)つ "
 ---
 
 ## Work Decomposition
