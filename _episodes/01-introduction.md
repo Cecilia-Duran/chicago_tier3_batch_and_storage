@@ -1,5 +1,5 @@
 ---
-title: "1 Introduction"
+title: "Introduction"
 teaching: 20
 exercises: 0
 questions:
@@ -9,7 +9,7 @@ objectives:
 - "Understand what is HTCondor"
 - ""
 keypoints:
-- "Ask yourself: What is HTCondor?"
+- "Anser What is HTCondor?"
 - "-"
 ---
 
