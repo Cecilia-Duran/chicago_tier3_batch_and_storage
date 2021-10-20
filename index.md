@@ -7,12 +7,6 @@ The UChicago Analysis Facility uses HTCondor for batch workloads. You will need 
 HTCondor is a job scheduler
 This lesson describes how to manage jobs
 
-<div class="text-center">
-  <a href="https://jghaley.github.io/usatlas-computing-bootcamp-2021/">
-    <button type="button" class="btn btn-info" style="font-size:large;text-align:center">US ATLAS Computing Bootcamp 2021</button>
-  </a>
-</div>
-
 > ## Prerequisites
 >
 >
@@ -22,3 +16,9 @@ This lesson describes how to manage jobs
 {: .prereq}
 
 {% include links.md %}
+
+<div class="text-center">
+  <a href="https://jghaley.github.io/usatlas-computing-bootcamp-2021/">
+    <button type="button" class="btn btn-info" style="font-size:large;text-align:center">US ATLAS Computing Bootcamp 2021</button>
+  </a>
+</div>
