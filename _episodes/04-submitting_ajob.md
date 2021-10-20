@@ -147,7 +147,7 @@ queue filename matching files *.dat
 
 The use of file globbing expands the list of items to be all files in the current directory that end in .dat. Only files, and not directories are considered due to the specification of files. One job is queued for each file in the list of items. For this example, assume that the three files initial.dat, middle.dat, and ending.dat form the list of items after expansion; macro filename is assigned the value of one of these file names for each job queued. That macro value is then substituted into the arguments and transfer_input_files commands. The queue command expands to
 
-```
+```bash
 transfer_input_files = initial.dat
 arguments            = -infile initial.dat
 queue
