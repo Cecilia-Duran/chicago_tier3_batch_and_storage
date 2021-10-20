@@ -257,7 +257,7 @@ queue 40
 
 The 40 instances of this job will have process ID values that run from 0 to 39. The two input files for process ID 0 are infile-0A.txt and infile-0B.txt, the ones for process ID 1 will be infile-1A.txt and infile-1B.txt, and so on, all the way to process ID 39, which will be files infile-39A.txt and infile-39B.txt. Using this macro for the output file naming of each of the 40 jobs creates outfile0.txt for process ID 0; outfile1.txt for process ID 1; and so on, to outfile39.txt for process ID 39.
 
-This example does not scale well as the number of jobs increases, because the number of files in the same directory becomes unwieldy. Assume now that there will be 100 instances of the science.exe job, and each instance has distinct input files, and produces a distinct output file. A recommended organization introduces a unique directory for each job instance. The following submit description file facilitates this organization by specifying the directory with the initialdir command. The directories for this example are named run0, run1, etc. all the way to run99 for the 100 instances of the following example submit file:
+Assume now that there will be 100 instances of the science.exe job, and each instance has distinct input files, and produces a distinct output file. A recommended organization introduces a unique directory for each job instance. The following submit description file facilitates this organization by specifying the directory with the initialdir command. The directories for this example are named run0, run1, etc. all the way to run99 for the 100 instances of the following example submit file:
 
 ```bash
 # science3.sub -- run 100 instances of science.exe, with
