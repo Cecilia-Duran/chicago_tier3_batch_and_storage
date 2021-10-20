@@ -32,6 +32,7 @@ Before submitting a job to HTCondor, it is a good idea to test it first locally,
 ```
 The corresponding submit description file might look like the following
 
+`example1.sub`
 ```bash
 # Example 1
 # Simple HTCondor submit description file
@@ -73,8 +74,10 @@ queue
 
 #### Example 2
 
+
 The submit description file for this example queues 150 runs of program foo.
 
+`example2.sub`
 ```bash
 # Example 2: Show off some fancy features,
 # including the use of pre-defined macros.
@@ -107,13 +110,13 @@ A wide variety of job submissions can be specified with extra information to the
 
 The form of the queue command defines variables and expands values, identifying a set of jobs. Square brackets identify an optional item.
 
-queue [< int expr > ]
+queue [ < int expr > ]
 
-queue [< int expr > ] [< varname > ] in [slice ] < list of items >
+queue [ < int expr > ] [ < varname > ] in [ slice ] < list of items >
 
-queue [< int expr > ] [< varname > ] matching [files | dirs ] [slice ] < list of items with file globbing >
+queue [ < int expr > ] [ < varname > ] matching [ files | dirs ] [ slice ] < list of items with file globbing >
 
-queue [< int expr > ] [< list of varnames > ] from [slice ] < file name > | < list of items >
+queue [ < int expr > ] [ < list of varnames > ] from [ slice ] < file name > | < list of items >
 
 All optional items have defaults:
 
