@@ -50,8 +50,9 @@ Change the sleep.sh file to be executable by running the following command:
 chmod u+x sleep.sh
 ```
 
-The submit description file describes the job. To submit this sample job, again use an editor to create the file sleep.sub.
+The submit description file describes the job. To submit this sample job, again use an editor to create the file:
 
+`sleep.sub.`
 ```bash
 # sleep.sub -- simple sleep job
 
@@ -187,7 +188,7 @@ will cause all jobs within that cluster to be removed.
 
 ## The science Job Example
 
-A second example job illustrates aspects of file specification for the job. Assume that the program executable is called science.exe. This program does not use standard input or output; instead, the command line to invoke this program specifies two input files and one output file. For this example, the command line to invoke science.exe (not as an HTCondor job) will be
+A **second example** job illustrates aspects of file specification for the job. This program does not use standard input or output; instead, the command line to invoke this program specifies two input files and one output file. For this example, the command line to invoke science.exe (not as an HTCondor job) will be
 
 ```
 science.exe infile-A.txt infile-B.txt outfile.txt
@@ -198,6 +199,7 @@ While the name of the executable is specified in the submit description file wit
 
 Here is the submit description file for this job:
 
+`science1.sub`
 ``` bash
 # science1.sub -- run one instance of science.exe
 executable              = science.exe
@@ -208,7 +210,7 @@ when_to_transfer_output = ON_EXIT
 log                     = science1.log
 queue
 ```
-The input files infile-A.txt and infile-B.txt will need to be available on the execute machine within the pool where the job runs. HTCondor cannot interpret command line arguments, so it cannot know that these command line arguments for this job specify input and output files. The submit command transfer_input_files instructs HTCondor to transfer these input files from the machine where the job is submitted to the machine chosen to execute the job. The default operation of HTCondor is to transfer all files created by the job on the execute machine back to the submit machine. Therefore, there is no specification of the outfile.txt output file.
+The input files infile-A.txt and infile-B.txt will need to be available on the execute machine within the pool where the job runs. HTCondor cannot interpret command line arguments, The submit command transfer_input_files instructs HTCondor to transfer these input files from the machine where the job is submitted to the machine chosen to execute the job. The default operation of HTCondor is to transfer all files created by the job on the execute machine back to the submit machine. Therefore, there is no specification of the outfile.txt output file.
 
 This example submit description file modifies the commands that direct the transfer of files from submit machine to execute machine and back again.
 
@@ -219,13 +221,13 @@ when_to_transfer_output = ON_EXIT
 {: .output}
 
 
-These values are the HTCondor defaults, so are not needed in this example. They are included to direct attention to the capabilities of HTCondor. The should_transfer_files command specifies whether HTCondor should assume the existence of a file system shared by the submit machine and the execute machine. Where there is a shared file system, a correctly configured pool of machines will not need to transfer the files from one machine to the other, as both can access the shared file system. Where there is not a shared file system, HTCondor must transfer the files from one machine to the other. The specification IF_NEEDED asks HTCondor to use a shared file system when one is detected, but to transfer the files when no shared file system is detected. When files are to be transferred, HTCondor automatically sends the executable as well as a file representing standard input; this file would be specified by the input submit command, and it is not relevant to this example. Other files are specified in a comma separated list with transfer_input_files, as they are in this example.
+These values are the HTCondor defaults. The should_transfer_files command specifies whether HTCondor should assume the existence of a file system shared by the submit machine and the execute machine. 
 
 When the job completes, all files created by the executable as it ran are transferred back to the submit machine.
 
 ## Expanding the science Job and the Organization of Files
 
-A further example promotes understanding of how HTCondor makes the submission of lots of jobs easy. Assume that the science.exe job is to be run 40 times. If the input and output files were exactly the same for each run, then only the last line of the given submit description file changes: from
+A **third example** promotes understanding of how HTCondor makes the submission of lots of jobs easy. Assume that the science.exe job is to be run 40 times. If the input and output files were exactly the same for each run:
 
 ```bash
 queue
@@ -237,7 +239,9 @@ queue 40
 ```
 {: .output}
 
-It is likely that this does not produce the desired outcome, as the output file created, outfile.txt, has the same name for each queued instance of the job, and thus this file of results for each run conflicts. Chances are that the input files also must be distinct for each of the 40 separate instances of the job. HTCondor offers the use of a macro that can uniquely name each run’s input and output file names. The $(Process) macro causes substitution by the process ID from the job identifier. The submit description file for this proposed solution uniquely names the files:
+It is likely that this does not produce the desired outcome, as the output file created, outfile.txt, has the same name for each queued instance of the job, and thus this file of results for each run conflicts. Chances are that the input files also must be distinct for each of the 40 separate instances of the job.
+
+HTCondor offers the use of a macro that can uniquely name each run’s input and output file names. The $(Process) macro causes substitution by the process ID from the job identifier. The submit description file for this proposed solution uniquely names the files:
 
 ```bash
 # science2.sub -- run 40 instances of science.exe
