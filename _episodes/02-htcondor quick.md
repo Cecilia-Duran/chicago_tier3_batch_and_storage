@@ -7,7 +7,7 @@ questions:
 objectives:
 - "Review concepts"
 keypoints:
-- "what did we learn"
+- "Mention 2 main features of HTCondor as a batch system"
 ---
 HTCondor is a job scheduler, you give HTCondor a file containing commands that tell it how to run jobs. HTCondor locates a machine that can run each job within the pool of machines, packages up the job and ships it off to this execute machine, the jobs run and output is returned to the machine that submitted the jobs
 
