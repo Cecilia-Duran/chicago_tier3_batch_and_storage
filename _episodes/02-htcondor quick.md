@@ -9,7 +9,7 @@ objectives:
 keypoints:
 - "what did we learn"
 ---
-HTCondor is a job scheduler, you five thc a file containgin commands that tell it how to run jobs. htc locates a machine that can run each job withn the pool of machines, packages up the job and ships it off to this execute machine, the jobs run and output is returned to the machine that submitted the jobs
+HTCondor is a job scheduler, you give HTCondor a file containing commands that tell it how to run jobs. HTCondor locates a machine that can run each job withn the pool of machines, packages up the job and ships it off to this execute machine, the jobs run and output is returned to the machine that submitted the jobs
 
 This guides provides enough guidance to submit and observer the successful completion of a first job, it then suggests extensions that you can apply to your particular jobs
 	
