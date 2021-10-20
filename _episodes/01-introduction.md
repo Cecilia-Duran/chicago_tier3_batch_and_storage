@@ -9,8 +9,7 @@ objectives:
 - "Understand what is HTCondor"
 - ""
 keypoints:
-- "Anser What is HTCondor?"
-- "-"
+- "What is HTCondor?? think!! ((⇀‸↼))"
 ---
 
 
