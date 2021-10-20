@@ -114,9 +114,9 @@ queue [ < int expr > ]
 
 queue [ < int expr > ] [ < varname > ] in [ slice ] < list of items >
 
-queue [ < int expr > ] [ < varname > ] matching [ files | dirs ] [ slice ] < list of items with file globbing >
+queue [ < int expr > ] [ < varname > ] matching [ files  |  dirs ] [ slice ] < list of items with file globbing >
 
-queue [ < int expr > ] [ < list of varnames > ] from [ slice ] < file name > | < list of items >
+queue [ < int expr > ] [ < list of varnames > ] from [ slice ] < file name >  |  < list of items >
 
 All optional items have defaults:
 
@@ -128,6 +128,7 @@ All optional items have defaults:
 - If slice is not specified, it defaults to all elements within the list. This is the Python slice [::], with a step value of 1.
 
 - If neither files nor dirs is specified in a specification using the from key word, then both files and directories are considered when globbing.
+
 
 The list of items uses syntax in one of two forms. One form is a comma and/or space separated list; the items are placed on the same line as the queue command. The second form separates items by placing each list item on its own line, and delimits the list with parentheses. The opening parenthesis goes on the same line as the queue command. The closing parenthesis goes on its own line. The queue command specified with the key word from will always use the second form of this syntax. Example 3 below uses this second form of syntax. Finally, the key word from accepts a shell command in place of file name, followed by a pipe | (example 4).
 
