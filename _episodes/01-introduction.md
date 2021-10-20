@@ -17,8 +17,7 @@ keypoints:
 # About HTCondor
 
 HTCondor has revolutioniozed the role computing plays in research for many people. 
-
-HTCondor is a specialized batch system for managing compute-intensive jobs.  Increasing computing throughput by several orders of magnitude may not merely deliver the same results faster, but may enable qualitatively different avenues of research.
+It is a specialized batch system for managing compute-intensive jobs.  Increasing computing throughput by several orders of magnitude may not merely deliver the same results faster, but may enable qualitatively different avenues of research.
 
 HTCondor is a specialized batch system for managing compute-intensive jobs. HTCondor provides a queuing mechanism, scheduling policy, priority scheme, and resource classifications. Users submit their compute jobs to HTCondor, HTCondor puts the jobs in a queue, runs them, and then informs the user as to the result.
 
