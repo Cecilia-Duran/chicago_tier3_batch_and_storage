@@ -13,9 +13,9 @@ Start by setting up the ATLAS environment and the athena release
 {: .language-bash}
 
 
-Clone the starting point using
+
 ~~~
-git clone --recursive 
+
 ~~~
 {: .language-bash}
 
