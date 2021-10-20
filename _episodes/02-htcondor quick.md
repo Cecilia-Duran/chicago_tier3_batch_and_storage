@@ -9,7 +9,7 @@ objectives:
 keypoints:
 - "what did we learn"
 ---
-HTCondor is a job scheduler, you give HTCondor a file containing commands that tell it how to run jobs. HTCondor locates a machine that can run each job withn the pool of machines, packages up the job and ships it off to this execute machine, the jobs run and output is returned to the machine that submitted the jobs
+HTCondor is a job scheduler, you give HTCondor a file containing commands that tell it how to run jobs. HTCondor locates a machine that can run each job within the pool of machines, packages up the job and ships it off to this execute machine, the jobs run and output is returned to the machine that submitted the jobs
 
 This guides provides enough guidance to submit and observer the successful completion of a first job, it then suggests extensions that you can apply to your particular jobs
 	
@@ -31,9 +31,11 @@ This guides provides enough guidance to submit and observer the successful compl
 
 For HTCondor to run a job it must be given details such as the names and location of the exe and all needed input files in a submit description file.
 
-This first executable program is a shell script. Try this example, log in to the submit machine, and use an editor to type in or copy and paste the file contents. Name the resulting file sleep.sh
+This first executable program is a shell script. Try this example, log in to the submit machine, and use an editor to type in or copy and paste the file contents. Name the resulting file:
 
-```bash
+
+
+```sleep.sh
 #!/bin/bash
 # file name: sleep.sh
 
@@ -70,18 +72,18 @@ Each line of the submit description file has the form
 command_name = value
 ```
 
-The command name is case insensitive and precedes an equals sign. Values to right of the equals sign are likely to be case sensitive, especially in the case that they specify paths and file names.
+The command name is case insensitive and precedes an equals sign. Values to right of the equals sign are likely to be case sensitive. 
 
 Next in this file is a specification of the executable to run. It specifies the program that becomes the HTCondor job. For this example, it is the file name of the script. A full path and executable name, or a path and executable relative to the current working directory may be specified.
 
-The log command causes a job event log file named sleep.log to be created on the submit machine once the job is submitted. A log is not necessary, but it can be incredibly useful in figuring out what happened or is happening with a job.
+The log command causes a job event log file named sleep.log to be created on the submit machine once the job is submitted.
 
 If this script/batch file were to be invoked from the command line, and outside of HTCondor, its single line of output
 
 ```
 sleeping for 6 seconds
 ```
-would be sent to standard output (the display). When submitted as an HTCondor job, standard output of the execute machine is on that execute machine, and thus unavailable. HTCondor captures standard output in a file due to the output command in the submit description file. This example names the redirected standard output file outfile.txt, and this file is returned to the submit machine when the job completes. The same structure is specified for standard error, as specified with the error command.
+would be sent to standard output. When submitted as an HTCondor job, standard output of the execute machine is on that execute machine. HTCondor captures standard output in a file due to the output command in the submit description file. This example names the redirected standard output file outfile.txt, and this file is returned to the submit machine when the job completes. The same structure is specified for standard error, as specified with the error command.
 
 The commands
 
@@ -100,6 +102,7 @@ With this submit description file, all that remains is to hand off the job to HT
 ```bash
 condor_submit sleep.sub
 ```
+{: .output}
 
 If the submission is successful, the terminal will display a response that identifies the job, of the form
 
@@ -111,7 +114,7 @@ Submitting job(s).
 
 ### Monitoring the job
 
-Once the job has been submitted, command line tools may help you follow along with the progress of the job. The condor_q command prints a listing of all the jobs currently in the queue. For example, a short time after the user Kris submits the sleep job the submit machine on a pool that has no other queued jobs, the output may appear as
+Once the job has been submitted, command line tools may help you follow along with the progress of the job. `The condor_q` command prints a listing of all the jobs currently in the queue. For example, a short time after the user Kris submits the sleep job the submit machine on a pool that has no other queued jobs, the output may appear as
 
 ~~~
 condor_q
