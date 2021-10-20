@@ -130,6 +130,7 @@ All optional items have defaults:
 - If neither files nor dirs is specified in a specification using the from key word, then both files and directories are considered when globbing.
 
 
+
 The list of items uses syntax in one of two forms. One form is a comma and/or space separated list; the items are placed on the same line as the queue command. The second form separates items by placing each list item on its own line, and delimits the list with parentheses. The opening parenthesis goes on the same line as the queue command. The closing parenthesis goes on its own line. The queue command specified with the key word from will always use the second form of this syntax. Example 3 below uses this second form of syntax. Finally, the key word from accepts a shell command in place of file name, followed by a pipe | (example 4).
 
 The optional slice specifies a subset of the list of items using the Python syntax for a slice. Negative step values are not permitted.
