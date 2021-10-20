@@ -34,8 +34,8 @@ For HTCondor to run a job it must be given details such as the names and locatio
 This first executable program is a shell script. Try this example, log in to the submit machine, and use an editor to type in or copy and paste the file contents. Name the resulting file:
 
 
-
-```sleep.sh
+`sleep.sh`
+```bash
 #!/bin/bash
 # file name: sleep.sh
 
