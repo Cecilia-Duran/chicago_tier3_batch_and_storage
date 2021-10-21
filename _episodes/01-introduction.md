@@ -28,7 +28,7 @@ But unlike traditional batch systems, HTCondor is also designed to run jobs on m
 ## How it works?
 ![image info](./../fig/intro_htc_diagram.png)
 
-![image info](./../fig/onecomputer.png) ![image info](./../fig/manycomputers.png)
+![image info](./../fig/onecomputer.png) | ![image info](./../fig/manycomputers.png)
 
 
 ![image info](./../fig/htcondor_vs_batchsystems.png)
