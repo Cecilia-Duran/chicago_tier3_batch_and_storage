@@ -9,7 +9,7 @@ objectives:
 - "Submit jobs"
 - ""
 keypoints:
-- "y"
+- "In this lesson, What are the main files we need to run our jobs??  ˒˒˒˒(>ړ”)> "
 - ""
 ---
 ## Submitting a Job
@@ -271,7 +271,69 @@ condor_q
 ```
 {: .output}
 
-#### Using parameters in the simple job
+#### Using parameters in the simple job
+
+If we would like to have our program calculate a whole set of values for different inputs. How can we do that?
+
+`simple_set.sub`
+```bash
+Universe   = vanilla
+Executable = simple
+Arguments  = 4 10
+Log        = simple_set.log
+Output     = simple_set.$(Process).out
+Error      = simple_set.$(Process).error
+Queue
+
+Arguments = 4 11
+Queue
+
+Arguments = 4 12
+Queue
+```
+
+Now see what happens when we ask HTCondor to run the job and check the status
+
+```
+%  condor_submit submit
+Submitting job(s)...
+Logging submit event(s)...
+3 job(s) submitted to cluster 2.
+
+% condor_q 
+
+-- Submitter: roy@ws-03.gs.unina.it : <192.167.2.23:32787> : ws-03.gs.unina.it
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               
+   2.0   roy             1/25 12:28   0+00:00:00 R  0   0.0  simple 4 10       
+   2.1   roy             1/25 12:28   0+00:00:00 R  0   0.0  simple 4 11       
+   2.2   roy             1/25 12:28   0+00:00:00 R  0   0.0  simple 4 12       
+
+3 jobs; 0 idle, 3 running, 0 held
+
+% condor_q 
+
+
+-- Submitter: roy@ws-03.gs.unina.it : <128.105.48.160:32787> : ws-03.gs.unina.it
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               
+
+0 jobs; 0 idle, 0 running, 0 held
+
+% ls simple*out
+simple.0.out  simple.1.out  simple.2.out  simple.out
+
+% cat simple.0.out
+Thinking really hard for 4 seconds...
+We calculated: 20
+
+% cat simple.1.out
+Thinking really hard for 4 seconds...
+We calculated: 22
+
+% cat simple.2.out
+Thinking really hard for 4 seconds...
+We calculated: 24
+```
+{: .output}
 
 
 ## Submitting many similar jobs with one queue command
@@ -284,7 +346,7 @@ queue [ < int expr > ]
 
 queue [ < int expr > ] [ < varname > ] in [ slice ] < list of items > 
 
-queue [ < int expr > ] [ < varname > ] matching [ files  |  dirs ] [ slice ] < list of items with file globbing > 
+queue [ < int expr > ] [ < varname > ] matching [ files  '|'  dirs ] [ slice ] < list of items with file globbing > 
 
 queue [ < int expr > ] [ < list of varnames > ] from [ slice ] < file name >  |  < list of items > 
 
