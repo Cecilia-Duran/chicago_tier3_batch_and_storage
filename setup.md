@@ -34,7 +34,7 @@ large files (input data, output, etc) ----> $WORK (or $DATA)
 > 
 > - Automation 
 >
-{: .output}
+{: .callout}
 {: .language-bash}
 
 
