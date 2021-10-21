@@ -28,8 +28,8 @@ What will be covered in this tutorial?
 > How HTCondor mathces and runs jobs
 > Testing and trouble shouting
 > Automation 
-
-
+>
+{: .output}
 {: .language-bash}
 
 
