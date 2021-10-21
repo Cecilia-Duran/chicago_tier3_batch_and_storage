@@ -3,9 +3,9 @@ title: "HTCondor Quick Start"
 teaching: 5
 exercises: 15
 questions:
-- "Brief Description"
+- "Brief Description of submitting jobs to HTCondor"
 objectives:
-- "Review concepts"
+- "Get a big picture of working with HTCondor"
 keypoints:
 - "Mention 2 main features of HTCondor as a batch system"
 ---
@@ -52,7 +52,7 @@ chmod u+x sleep.sh
 
 The submit description file describes the job. To submit this sample job, again use an editor to create the file:
 
-`sleep.sub.`
+`sleep.sub`
 ```bash
 # sleep.sub -- simple sleep job
 
