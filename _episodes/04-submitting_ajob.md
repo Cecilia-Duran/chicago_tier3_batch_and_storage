@@ -6,7 +6,7 @@ questions:
 - "The worst thing about prison was the dementors"
 - "Improversation"
 objectives:
-- "Retrieve jobs"
+- "Submit jobs"
 - ""
 keypoints:
 - "y"
@@ -74,8 +74,7 @@ queue
 
 #### Example 2
 
-
-The submit description file for this example queues 150 runs of program foo.
+A simple example
 
 `example2.sub`
 ```bash
@@ -104,6 +103,34 @@ Each instance of this program works on one input file.
 We prepare 150 copies of this input file in the current directoy, and name them input_file.0, ... up to input_file.149. 
 Whit transfer_input_files, we tell HTCondor which input file to send to each instance of the program.
 
+#### Example 3
+
+A simple example with a python script
+
+We write our executable in the file:
+
+`hello.py`
+```bash
+#!/usr/bin/env python
+import sys
+import time
+i=1
+while i<=6:
+        print i
+        i+=1
+        time.sleep(1)
+print 2**8
+print "hello world received argument = " +sys.argv[1]
+```
+
+```bash
+python hello.py
+```
+
+
+
+
+
 ## Submitting many similar jobs with one queue command
 
 A wide variety of job submissions can be specified with extra information to the queue submit command. This flexibility eliminates the need for a job wrapper or Perl script for many submissions.
@@ -112,11 +139,11 @@ The form of the queue command defines variables and expands values, identifying 
 
 queue [ < int expr > ]
 
-queue [ < int expr > ] [ < varname > ] in [ slice ] < list of items >
+queue [ < int expr > ] [ < varname > ] in [ slice ] < list of items > 
 
-queue [ < int expr > ] [ < varname > ] matching [ files  |  dirs ] [ slice ] < list of items with file globbing >
+queue [ < int expr > ] [ < varname > ] matching [ files  |  dirs ] [ slice ] < list of items with file globbing > 
 
-queue [ < int expr > ] [ < list of varnames > ] from [ slice ] < file name >  |  < list of items >
+queue [ < int expr > ] [ < list of varnames > ] from [ slice ] < file name >  |  < list of items > 
 
 All optional items have defaults:
 
