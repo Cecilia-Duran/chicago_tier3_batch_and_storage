@@ -28,12 +28,16 @@ But unlike traditional batch systems, HTCondor is also designed to run jobs on m
 ## How it works?
 ![image info](./../fig/intro_htc_diagram.png)
 
+This architecture can be implemented in different ways.
+
 ![image info](./../fig/onecomputer.png) | ![image info](./../fig/manycomputers.png)
 
-
+## Why should we use HTCondor?
 ![image info](./../fig/htcondor_vs_batchsystems.png)
  
-
-
+>
+> - HTCondor is already setup at the UChicago Analysis Facility, thanks to the UChicago Team!!
+>
+{: .callout}
 {% include links.md %}
 
