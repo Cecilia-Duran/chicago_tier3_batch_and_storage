@@ -6,7 +6,7 @@ questions:
 - "The worst thing about prison was the dementors"
 - "Improversation"
 objectives:
-- "Submit jobs"
+- "Fly! you fools!!"
 - ""
 keypoints:
 - "In this lesson, mention some other useful options to run our jobs??  ˒˒˒˒(>ړ”)> "
