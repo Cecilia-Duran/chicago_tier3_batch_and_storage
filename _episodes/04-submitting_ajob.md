@@ -9,7 +9,7 @@ objectives:
 - "Fly! you fools!!"
 - ""
 keypoints:
-- "In this lesson, mention some other useful options to run our jobs??  ˒˒˒˒(>ړ”)> "
+- "In this lesson, mention some other useful options to run our jobs??  ˒˒˒˒(>,”)> "
 ---
 ## Submitting a Job
 
