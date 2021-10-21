@@ -3,18 +3,18 @@ title: "Services for Running Jobs"
 teaching: 10
 exercises: 20
 questions:
-- "Good Practices"
+- "I have a lot of questions. Number one, how dare you?"
 objectives:
-- "-"
+- "Alwas consider the good practices, specially when working remotely"
 keypoints:
-- "-"
+- "Where should I do my work when logging in to the UChicago Analysis Facility?"
 ---
 
 ## Services for Running Jobs
 
 Jobs can use these services to provide more reliable runs, to give logging and monitoring data for users, and to synchronize with other jobs. Note that different HTCondor job universes may provide different services. The functionality below is available in the vanilla universe, unless otherwise stated.
 
-## Environment Variables
+## Environment Variables
 
 An HTCondor job running on a worker node does not, by default, inherit the environment variables from the machine it runs on or the machine it was submitted from. If it did, the environment might change from run to run, or machine to machine, and create non reproducible, difficult to debug problems.
 
