@@ -16,12 +16,19 @@ keypoints:
   > - Job : an independently-scheduled unit of computing work
   >
   > - 3 main pieces :
-  >>         - Executable: script to run.
-  >>         - Input:  input arguments and/or file based information.
-  >>         - Output: any files or display information produced by the executable.
+  >
+  >         - Executable: script to run.
+  >
+  >         - Input:  input arguments and/or file based information.
+  >
+  >         - Output: any files or display information produced by the executable.
+  >
   > - In order to run many jobs, executable must run on the command line without any graphical input from the user
+  >
   > - Machine : Computer, with CPU cores, memory, disk
+  >
   > - Slots : Asignable unit of a machine, i.e. 1 job per slot.
+  >
   > - HTCondor can split and create new slots. 
   >
   {: .callout}
