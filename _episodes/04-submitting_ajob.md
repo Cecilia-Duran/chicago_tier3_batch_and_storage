@@ -126,10 +126,39 @@ print "hello world received argument = " +sys.argv[1]
 ```bash
 python hello.py
 ```
+Create the directory:
 
+```bash
+mkdir output
+```
 
+Now we need or submit file:
 
+hello.sub
+```bash
+Universe        = vanilla
+Executable      = hello.py
+Output          = output/hello.out.$(Cluster).$(Process).txt
+Error           = output/hello.error.$(Cluster).$(Process).txt
+Log             = output/hello.log.$(Cluster).$(Process).txt
+notification = Never
+Arguments = $(Process)
+PeriodicRelease = ((JobStatus==5) && (CurentTime - EnteredCurrentStatus) > 30)
+OnExitRemove = (ExitStatus == 0)
+Queue 4
+```
 
+submit out job
+
+```bash
+condor_submit hello.sub
+```
+
+check status:
+
+```bash
+condor_q
+```
 
 ## Submitting many similar jobs with one queue command
 
