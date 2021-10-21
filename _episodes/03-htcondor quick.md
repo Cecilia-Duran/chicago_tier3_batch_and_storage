@@ -3,11 +3,11 @@ title: "HTCondor Quick Start"
 teaching: 5
 exercises: 15
 questions:
-- "Brief Description of submitting jobs to HTCondor"
+- "How do I submit stuff to HTCondor?"
 objectives:
-- "Get a big picture of working with HTCondor"
+- "Even the smallest person can change the course of the future"
 keypoints:
-- "Mention 2 main features of HTCondor as a batch system"
+- "What are the main failes you need to submit your jobs to HTCondor?"
 ---
 HTCondor is a job scheduler, you give HTCondor a file containing commands that tell it how to run jobs. HTCondor locates a machine that can run each job within the pool of machines, packages up the job and ships it off to this execute machine, the jobs run and output is returned to the machine that submitted the jobs
 
