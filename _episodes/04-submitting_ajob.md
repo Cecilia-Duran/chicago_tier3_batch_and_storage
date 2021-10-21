@@ -162,8 +162,9 @@ condor_q
 
 ### Example 4
 
-A simple example with a small program in C
-let's start creating a directory for this example 
+A simple example with a small program in C.
+
+Let's start creating a directory for this example 
 
 ```bash
 mkdir simple_c
