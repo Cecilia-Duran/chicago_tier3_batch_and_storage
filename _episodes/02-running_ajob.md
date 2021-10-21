@@ -6,7 +6,7 @@ questions:
 - "40 seconds?"
 - "But I want it now"
 objectives:
-- "Understand the jobs"
+- "Understand the basic concepts of running a job"
 keypoints:
 - " What are are the 5 steps to run a job??  ---=≡Σ((( つ•̀ω•́)つ "
 - " What are the 3 main pieces of a job?? "
@@ -29,8 +29,9 @@ keypoints:
   
    - Slots : Asignable unit of a machine, i.e. 1 job per slot.
   
-   - HTCondor can split and create new slots. 
-  
+   - HTCondor can split and create new slots.
+   -  
+   {: .callout}
  
 ## Work Decomposition
 
