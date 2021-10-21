@@ -35,9 +35,10 @@ This architecture can be implemented in different ways.
 ## Why should we use HTCondor?
 ![image info](./../fig/htcondor_vs_batchsystems.png)
  
-> ## 
+> ## Are we ready to use HTCondor?
 > - HTCondor is already setup at the UChicago Analysis Facility, thanks to the UChicago Team!!
 >
 {: .callout}
+
 {% include links.md %}
 
