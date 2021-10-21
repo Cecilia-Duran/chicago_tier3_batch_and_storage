@@ -3,7 +3,7 @@ title: "Managing a job"
 teaching: 15
 exercises: 25
 questions:
-- "Who is Justice Beaver"
+- "Who is Justice Beaver??"
 objectives:
 - "Don't fall sleep"
 keypoints:
