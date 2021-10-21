@@ -160,6 +160,119 @@ check status:
 condor_q
 ```
 
+### Example 4
+
+A simple example with a small program in C
+let's start creating a directory for this example 
+
+```bash
+mkdir simple_c
+cd simple_c
+```
+
+Write your executable in the file:
+
+`simple.c`
+```bash
+#include <stdio.h>
+
+main(int argc, char **argv)
+{
+    int sleep_time;
+    int input;
+    int failure;
+
+    if (argc != 3) {
+        printf("Usage: simple <sleep-time> <integer>\n");
+        failure = 1;
+    } else {
+        sleep_time = atoi(argv[1]);
+        input      = atoi(argv[2]);
+
+        printf("Thinking really hard for %d seconds...\n", sleep_time);
+        sleep(sleep_time);
+        printf("We calculated: %d\n", input * 2);
+        failure = 0;
+    }
+    return failure;
+}
+```
+
+compile the program
+
+```bash
+gcc -o simple simple.c
+```
+
+Now run the program and tell it to sleep for four seconds and calculate 10 * 2: 
+```bash
+./simple 4 10
+```
+output
+```
+Thinking really hard for 4 seconds...
+We calculated: 20
+```
+{: .output}
+
+Submitting the job
+
+`simple.sub`
+
+```bash
+Universe   = vanilla
+Executable = simple
+Arguments  = 4 10
+Log        = simple.log
+Output     = simple.out
+Error      = simple.error
+Queue
+```
+Ask HTCondor to run the job
+
+```bash
+condor_submit simple.sub
+```
+Output
+```
+Submitting job(s)con.
+Logging submit event(s).
+1 job(s) submitted to cluster 6075
+```
+{: .output}
+
+watch the job run
+
+```
+condor_q
+
+-- Submitter: ws-03.gs.unina.it : <192.167.2.23:34353> : ws-03.gs.unina.it
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               
+   2.0   temp-01         3/15 16:27   0+00:00:00 I  0   0.0  simple 4 10       
+
+1 jobs; 1 idle, 0 running, 0 held
+
+% condor_q
+
+-- Submitter: ws-03.gs.unina.it : <192.167.2.23:34353> : ws-03.gs.unina.it
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               
+   2.0   temp-01         3/15 16:27   0+00:00:01 R  0   0.0  simple 4 10       
+
+1 jobs; 0 idle, 1 running, 0 held
+
+% condor_q
+
+
+-- Submitter: ws-03.gs.unina.it : <192.167.2.23:34353> : ws-03.gs.unina.it
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               
+
+0 jobs; 0 idle, 0 running, 0 held
+```
+{: .output}
+
+#### Using parameters in the simple job
+
+
 ## Submitting many similar jobs with one queue command
 
 A wide variety of job submissions can be specified with extra information to the queue submit command. This flexibility eliminates the need for a job wrapper or Perl script for many submissions.
@@ -232,7 +345,7 @@ input = C
 queue
 ````
 
-Example 3
+### Example 3
 
 ```bash
 queue input, arguments from (
@@ -251,7 +364,7 @@ arguments = -c -d 92
 queue
 ```
 
-## Example 4
+### Example 4
 
 ```bash
 queue from seq 7 9 |
