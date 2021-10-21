@@ -9,14 +9,11 @@ objectives:
 - "Submit jobs"
 - ""
 keypoints:
-- "In this lesson, What are the main files we need to run our jobs??  ˒˒˒˒(>ړ”)> "
-- ""
+- "In this lesson, mention some other useful options to run our jobs??  ˒˒˒˒(>ړ”)> "
 ---
 ## Submitting a Job
 
 The `condor_submit` command takes a job description file as input and submits the job to HTCondor.  Items such as the name of the executable to run, the initial working directory, and command-line arguments to the program all go into the submit description file. `condor_submit` creates a job ClassAd based upon the information, and HTCondor works toward running the job.
-
-It is easy to submit multiple runs of a program to HTCondor with a single submit description file. To run the same program many times with different input data sets, arrange the data files accordingly so that each run reads its own input, and each run writes its own output. Each individual run may have its own initial working directory, files mapped for stdin, stdout, stderr, command-line arguments, and shell environment.
 
 ## Sample submit description files
 
@@ -362,9 +359,6 @@ All optional items have defaults:
 - If neither files nor dirs is specified in a specification using the from key word, then both files and directories are considered when globbing.
 
 
-
-The list of items uses syntax in one of two forms. One form is a comma and/or space separated list; the items are placed on the same line as the queue command. The second form separates items by placing each list item on its own line, and delimits the list with parentheses. The opening parenthesis goes on the same line as the queue command. The closing parenthesis goes on its own line. The queue command specified with the key word from will always use the second form of this syntax. Example 3 below uses this second form of syntax. Finally, the key word from accepts a shell command in place of file name, followed by a pipe | (example 4).
-
 The optional slice specifies a subset of the list of items using the Python syntax for a slice. Negative step values are not permitted.
 
 Here are a set of examples.
@@ -376,8 +370,6 @@ transfer_input_files = $(filename)
 arguments            = -infile $(filename)
 queue filename matching files *.dat
 ```
-
-The use of file globbing expands the list of items to be all files in the current directory that end in .dat. Only files, and not directories are considered due to the specification of files. One job is queued for each file in the list of items. For this example, assume that the three files initial.dat, middle.dat, and ending.dat form the list of items after expansion; macro filename is assigned the value of one of these file names for each job queued. That macro value is then substituted into the arguments and transfer_input_files commands. The queue command expands to
 
 ```bash
 transfer_input_files = initial.dat
@@ -391,13 +383,11 @@ arguments            = -infile ending.dat
 queue
 ```
 
-### Example 2
+### Example 2
 
 ```bash 
 queue 1 input in A, B, C
 ```
-
-Variable input is set to each of the 3 items in the list, and one job is queued for each. For this example the queue command expands to
 
 ```bash
 input = A
@@ -416,7 +406,7 @@ queue input, arguments from (
   file2, -c -d 92
 )
 ```
-Using the from form of the options, each of the two variables specified is given a value from the list of items. For this example the queue command expands to
+Each of the two variables specified is given a value from the list of items. For this example the queue command expands to
 
 ```bash
 input = file1
@@ -427,7 +417,7 @@ arguments = -c -d 92
 queue
 ```
 
-### Example 4
+### Example 4
 
 ```bash
 queue from seq 7 9 |
@@ -443,6 +433,35 @@ queue
 item = 9
 queue
 ```
+## Variables in the Submit Description File
+
+
+`$(Cluster) or $(ClusterId)`
+
+`$(Process) or $(ProcId)`
+
+`$$(a_machine_classad_attribute)`
+
+`$$([ an_evaluated_classad_expression ])`
+   
+`$(ARCH)`
+
+`$(OPSYS) $(OPSYSVER) $(OPSYSANDVER) $(OPSYSMAJORVER)`
+
+`$(SUBMIT_FILE)`
+
+`$(SUBMIT_TIME)`
+
+`$(Year) $(Month) $(Day)`
+
+`$(Item)`
+
+`$(ItemIndex)`
+
+`$(Step)`
+
+`$(Row)`
+
 ## Including Submit Commands Defined Elsewhere
 
 Externally defined submit commands can be incorporated into the submit description file using the syntax
@@ -453,17 +472,11 @@ include : <what-to-include>
 
 The <what-to-include> specification may specify a single file, where the contents of the file will be incorporated into the submit description file at the point within the file where the include is. Or, <what-to-include> may cause a program to be executed, where the output of the program is incorporated into the submit description file. The specification of <what-to-include> has the bar character (|) following the name of the program to be executed.
 
-The include key word is case insensitive. There are no requirements for white space characters surrounding the colon character.
-
-Included submit commands may contain further nested include specifications, which are also parsed, evaluated, and incorporated. Levels of nesting on included files are limited, such that infinite nesting is discovered and thwarted, while still permitting nesting.
-
 Consider the example
 
 ```bash
 include : ./list-infiles.sh |
 ```
-
-In this example, the bar character at the end of the line causes the script list-infiles.sh to be invoked, and the output of the script is parsed and incorporated into the submit description file. If this bash script is in the PATH when submit is run, and contains
 
 ```bash
 #!/bin/sh
@@ -472,7 +485,6 @@ echo "transfer_input_files = `ls -m infiles/*.dat`"
 exit 0
 ```
 
-then the output of this script has specified the set of input files to transfer to the execute host. For example, if directory infiles contains the three files A.dat, B.dat, and C.dat, then the submit command
 
 ```bash
 transfer_input_files = infiles/A.dat, infiles/B.dat, infiles/C.dat
@@ -498,8 +510,6 @@ endif
 
 An else key word and statements are not required, such that simple if semantics are implemented. The <simple condition> does not permit compound conditions. It optionally contains the exclamation point character (!) to represent the not operation, followed by
 
-- the defined keyword followed by the name of a variable. If the variable is defined, the statement(s) are incorporated into the expanded input. If the variable is not defined, the statement(s) are not incorporated into the expanded input. As an example,
-
 ```bash
     if defined MY_UNDEFINED_VARIABLE
        X = 12
@@ -512,11 +522,11 @@ results in X = -1, when MY_UNDEFINED_VARIABLE is not yet defined.
 
 - the version keyword, representing the version number of of the daemon or tool currently reading this conditional. This keyword is followed by an HTCondor version number. That version number can be of the form x.y.z or x.y. The version of the daemon or tool is compared to the specified version number. The comparison operators are
 
-    - '==' for equality. Current version 8.2.3 is equal to 8.2.
+    - `==` for equality. Current version 8.2.3 is equal to 8.2.
 
-    - '>=' to see if the current version number is greater than or equal to. Current version 8.2.3 is greater than 8.2.2, and current version 8.2.3 is greater than or equal to 8.2.
+    - `>=` to see if the current version number is greater than or equal to. Current version 8.2.3 is greater than 8.2.2, and current version 8.2.3 is greater than or equal to 8.2.
 
-    - '<=' to see if the current version number is less than or equal to. Current version 8.2.0 is less than 8.2.2, and current version 8.2.3 is less than or equal to 8.2.
+    - `<=  to see if the current version number is less than or equal to. Current version 8.2.0 is less than 8.2.2, and current version 8.2.3 is less than or equal to 8.2.
 
     As an example,
 
@@ -528,15 +538,11 @@ results in X = -1, when MY_UNDEFINED_VARIABLE is not yet defined.
     endif
     ```
 
-    results in defining DO_X as True if the current version of the daemon or tool reading this if statement is 8.1.6 or a more recent version.
-
     - True or yes or the value 1. The statement(s) are incorporated.
 
     - False or no or the value 0 The statement(s) are not incorporated.
 
-    - $(<variable>) may be used where the immediately evaluated value is a simple boolean value. A value that evaluates to the empty string is considered False, otherwise a value that does not evaluate to a simple boolean value is a syntax error.
-
-The syntax
+This sintax
 
 ```bash
 if <simple condition>
@@ -566,7 +572,7 @@ else
 endif
 ```
 
-Here is an example use of a conditional in the submit description file. A portion of the sample.sub submit description file uses the if/else syntax to define command line arguments in one of two ways:
+Example
 
 ```bash
 if defined X
@@ -595,14 +601,13 @@ condor_submit  sample.sub
 
 then the command line arguments of the submitted job become
 
-```
+```bash
 arguments = -n 1 -debug
 ```
+        
+## Interactive Jobs
 
-
-## Interactive Jobs
-
-An interactive job is a Condor job that is provisioned and scheduled like any other vanilla universe Condor job onto an execute machine within the pool. The result of a running interactive job is a shell prompt issued on the execute machine where the job runs. The user that submitted the interactive job may then use the shell as desired, perhaps to interactively run an instance of what is to become a Condor job. This might aid in checking that the set up and execution environment are correct, or it might provide information on the RAM or disk space needed. This job (shell) continues until the user logs out or any other policy implementation causes the job to stop running. A useful feature of the interactive job is that the users and jobs are accounted for within Condor’s scheduling and priority system.
+An interactive job is a Condor job that is provisioned and scheduled like any other vanilla universe Condor job onto an execute machine within the pool. The result of a running interactive job is a shell prompt issued on the execute machine where the job runs. 
 
 Neither the submit nor the execute host for interactive jobs may be on Windows platforms.
 
