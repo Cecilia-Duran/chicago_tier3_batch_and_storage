@@ -5,9 +5,9 @@ exercises: 25
 questions:
 - "Who is Justice Beaver"
 objectives:
-- "-"
+- "Don't fall sleep"
 keypoints:
-- "-"
+- " What do you love to eat?"
 ---
 
 What to do once jobs are submitted?
