@@ -20,14 +20,19 @@ For this tutorial we will work at the /home area  but remember to move to the /w
 small files (git repositories, source code, text files, configuration files, etc) ---> $HOME
 large files (input data, output, etc) ----> $WORK (or $DATA)
 
-What will be covered in this tutorial?
-
-> What is HTCondor?
-> Running a job with HTCondor
-> Submitting multiple jobs with HTCondor
-> How HTCondor mathces and runs jobs
-> Testing and trouble shouting
-> Automation 
+> ## What will be covered in this tutorial?
+>
+> - What is HTCondor?
+> 
+> - Running a job with HTCondor
+> 
+> - Submitting multiple jobs with HTCondor
+> 
+> - How HTCondor mathces and runs jobs
+> 
+> - Testing and trouble shouting
+> 
+> - Automation 
 >
 {: .output}
 {: .language-bash}
