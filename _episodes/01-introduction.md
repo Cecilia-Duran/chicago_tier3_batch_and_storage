@@ -9,8 +9,8 @@ objectives:
 - "Understand what is HTCondor"
 - "How does it work?"
 keypoints:
-- " What is HTCondor?? think!! ((⇀‸↼)) "
-- " Mention 2 remarkable features of HTCondor compared to other batch systems ᕙ(º_º)ᕗ "
+- " 1. What is HTCondor?? think!! ((⇀‸↼)) "
+- " 2. Mention 2 remarkable features of HTCondor compared to other batch systems ᕙ(º_º)ᕗ "
 ---
 
 
